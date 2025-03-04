@@ -13,11 +13,11 @@ SELECT
 FROM Registro_Venda as RV
 JOIN Venda_Bolo VB ON RV.ID_registro_venda = VB.FK_registro_venda
 GROUP BY mes_ano
-ORDER BY total_vendas DESC;
+ORDER BY vendas_mes DESC;
 
--- Total de Vendas por Mês
+-- Total de Unidades Vendidadas por Mês
 SELECT
-	date_format(RV.data_compra, '%M-%Y') AS mes_ano,
+	DATE_FORMAT(RV.data_compra, '%M-%Y') AS mes_ano,
     SUM(VB.quantidade) as venda_bolos_mes
 FROM Registro_Venda as RV
 JOIN Venda_Bolo as VB on RV.ID_registro_venda = VB.FK_registro_venda
